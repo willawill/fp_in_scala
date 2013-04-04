@@ -23,4 +23,22 @@ class CountChangeSuite extends FunSuite {
   test("countChange: unsorted CHF") {
     assert(countChange(300,List(500,5,50,100,20,200,10)) === 1022)
   }
+
+  test("countChange: coins have negative value") {
+    intercept[IllegalArgumentException]{
+      countChange(100, List(1, -1))
+    }
+  }
+
+  test("countChange: money is zero"){
+    assert(countChange(0, List(1,2,3)) === 1)
+  }
+
+  test("countChange: money is negative"){
+    intercept[NoSuchElementException] {
+      countChange(-1, List(1,2,5))
+    }
+  }
+
+
 }

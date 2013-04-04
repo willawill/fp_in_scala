@@ -45,5 +45,26 @@ object Main {
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = ???
+  def countChange(money: Int, coins: List[Int]): Int = {
+
+    def changeRecursion(coins: List[Int], target: Int) : Int ={
+      if (target == 0) 1
+      else if (target < 0 || coins.isEmpty) 0
+      else{
+        changeRecursion(coins.slice(0, coins.size - 1), target)+
+        changeRecursion(coins, target - coins(coins.length -1))
+      }
+    }
+
+    def valid(coins: List[Int]) : Boolean = {
+      coins.forall(_.getClass == classOf[Int]) && coins.forall(_ >= 0 ) && (coins.distinct == coins)
+    }
+
+    if (money == 0) 1
+    else if (money < 0 || coins.isEmpty) throw new NoSuchElementException
+    else if (valid(coins) == false) throw new IllegalArgumentException
+    else{
+      changeRecursion(coins.sorted, money)
+    }
+  }
 }

@@ -28,7 +28,7 @@ object Lists {
       if (remain.isEmpty) current
       else subSum(current + remain.head, remain.tail)
     }
-    if (xs.isEmpty) throw new NoSuchElementException("hahaha")
+    if (xs.isEmpty) throw new NoSuchElementException
     else subSum(xs.head, xs.tail)
   }
 
