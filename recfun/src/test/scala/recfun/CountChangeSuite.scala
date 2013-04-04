@@ -39,6 +39,4 @@ class CountChangeSuite extends FunSuite {
       countChange(-1, List(1,2,5))
     }
   }
-
-
 }

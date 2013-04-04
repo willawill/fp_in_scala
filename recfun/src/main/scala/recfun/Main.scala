@@ -60,9 +60,10 @@ object Main {
       coins.forall(_.getClass == classOf[Int]) && coins.forall(_ >= 0 ) && (coins.distinct == coins)
     }
 
-    if (money == 0) 1
-    else if (money < 0 || coins.isEmpty) throw new NoSuchElementException
-    else if (valid(coins) == false) throw new IllegalArgumentException
+    if (money < 0) throw new NoSuchElementException
+    else if(coins.isEmpty) 0
+    else if (money == 0) 1
+    else if (!valid(coins)) throw new IllegalArgumentException
     else{
       changeRecursion(coins.sorted, money)
     }
